@@ -1,0 +1,223 @@
+:root {
+  --fond: #f6f7f4;
+  --carte: #ffffff;
+  --texte: #1d2320;
+  --texte-doux: #5f6b65;
+  --bordure: #dfe3dd;
+  --accent: #1f6f4a;
+  --accent-texte: #ffffff;
+  --survol: #eef2ec;
+  --terre: #c0562f;
+  --herbe: #3f8a2a;
+  --dur_indoor: #6a55c9;
+  --dur_outdoor: #2b73b3;
+  --or: #b8860b;
+  --note: 31 111 74;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --fond: #121614;
+    --carte: #1b211e;
+    --texte: #e6ebe7;
+    --texte-doux: #9aa69f;
+    --bordure: #2c3530;
+    --accent: #3fae7a;
+    --accent-texte: #0d1310;
+    --survol: #232b27;
+    --terre: #e07a52;
+    --herbe: #6cbf4f;
+    --dur_indoor: #9a88f0;
+    --dur_outdoor: #5aa2e0;
+    --or: #e0b341;
+    --note: 63 174 122;
+  }
+}
+
+:root[data-theme="dark"] {
+  --fond: #121614;
+  --carte: #1b211e;
+  --texte: #e6ebe7;
+  --texte-doux: #9aa69f;
+  --bordure: #2c3530;
+  --accent: #3fae7a;
+  --accent-texte: #0d1310;
+  --survol: #232b27;
+  --terre: #e07a52;
+  --herbe: #6cbf4f;
+  --dur_indoor: #9a88f0;
+  --dur_outdoor: #5aa2e0;
+  --or: #e0b341;
+  --note: 63 174 122;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--fond);
+  color: var(--texte);
+  font: 15px/1.45 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+.entete {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px 12px;
+}
+
+h1 { margin: 0; font-size: 1.5rem; }
+h2 { margin: 0 0 12px; font-size: 1.2rem; }
+h3 { margin: 20px 0 8px; font-size: 1rem; }
+.sous-titre { margin: 2px 0 0; color: var(--texte-doux); }
+
+.controles { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.graine { display: flex; gap: 6px; align-items: center; color: var(--texte-doux); }
+.graine input {
+  width: 120px;
+  padding: 7px 8px;
+  border: 1px solid var(--bordure);
+  border-radius: 6px;
+  background: var(--carte);
+  color: var(--texte);
+  font: inherit;
+}
+
+.bouton {
+  padding: 8px 14px;
+  border: 1px solid var(--accent);
+  border-radius: 6px;
+  background: var(--accent);
+  color: var(--accent-texte);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+.bouton.secondaire { background: transparent; color: var(--accent); }
+.bouton:disabled { opacity: 0.45; cursor: default; }
+
+.statut { padding: 0 24px 12px; color: var(--texte-doux); }
+
+.onglets {
+  display: flex;
+  gap: 4px;
+  padding: 0 24px;
+  border-bottom: 1px solid var(--bordure);
+  overflow-x: auto;
+}
+.onglets button {
+  padding: 10px 14px;
+  border: none;
+  border-bottom: 3px solid transparent;
+  background: none;
+  color: var(--texte-doux);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.onglets button.actif { color: var(--texte); border-bottom-color: var(--accent); }
+
+main { padding: 20px 24px 48px; }
+
+.carte {
+  background: var(--carte);
+  border: 1px solid var(--bordure);
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.defile { overflow-x: auto; }
+
+table { width: 100%; border-collapse: collapse; }
+th, td { padding: 7px 10px; text-align: left; border-bottom: 1px solid var(--bordure); white-space: nowrap; }
+th { color: var(--texte-doux); font-weight: 600; font-size: 0.85rem; }
+th.triable { cursor: pointer; user-select: none; }
+th.triable:hover { color: var(--texte); }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+tr.cliquable { cursor: pointer; }
+tr.cliquable:hover td { background: var(--survol); }
+tr.separateur td { border-bottom: 2px dashed var(--accent); }
+
+.badge {
+  display: inline-block;
+  padding: 1px 8px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  border: 1px solid currentColor;
+}
+.surface-terre { color: var(--terre); }
+.surface-herbe { color: var(--herbe); }
+.surface-dur_indoor { color: var(--dur_indoor); }
+.surface-dur_outdoor { color: var(--dur_outdoor); }
+.cat-GC { color: var(--or); }
+.cat-FINALS { color: var(--or); }
+.cat-M1000 { color: var(--accent); }
+.cat-500, .cat-250 { color: var(--texte-doux); }
+
+.pays { color: var(--texte-doux); font-size: 0.8rem; margin-left: 6px; }
+.doux { color: var(--texte-doux); }
+.gras { font-weight: 700; }
+
+.note { text-align: center; font-variant-numeric: tabular-nums; border-radius: 4px; }
+
+.recherche {
+  width: 100%;
+  max-width: 320px;
+  padding: 8px 10px;
+  margin-bottom: 12px;
+  border: 1px solid var(--bordure);
+  border-radius: 6px;
+  background: var(--carte);
+  color: var(--texte);
+  font: inherit;
+}
+
+.entete-detail { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-bottom: 12px; }
+.entete-detail h2 { margin: 0; }
+
+.choix-tours { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+.choix-tours button {
+  padding: 4px 10px;
+  border: 1px solid var(--bordure);
+  border-radius: 999px;
+  background: var(--carte);
+  color: var(--texte-doux);
+  font: inherit;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+.choix-tours button.actif { border-color: var(--accent); color: var(--accent); font-weight: 600; }
+
+.tableau { display: flex; gap: 14px; overflow-x: auto; padding-bottom: 8px; }
+.colonne { display: flex; flex-direction: column; min-width: 220px; }
+.colonne h4 { margin: 0 0 8px; font-size: 0.85rem; color: var(--texte-doux); text-align: center; }
+.cartes { flex: 1; display: flex; flex-direction: column; justify-content: space-around; gap: 8px; }
+
+.match {
+  border: 1px solid var(--bordure);
+  border-radius: 8px;
+  background: var(--carte);
+  padding: 6px 8px;
+  font-size: 0.85rem;
+}
+.match .ligne { display: flex; justify-content: space-between; gap: 8px; }
+.match .gagnant { font-weight: 700; }
+.match .perdu { color: var(--texte-doux); }
+.match .tete { color: var(--texte-doux); font-size: 0.75rem; margin-right: 4px; }
+.match .score { color: var(--texte-doux); font-size: 0.78rem; margin-top: 2px; font-variant-numeric: tabular-nums; }
+
+.grille { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
+.liste-matchs { display: grid; gap: 6px; }
+
+.champion { color: var(--or); font-weight: 700; }
+
+@media (max-width: 600px) {
+  .entete, main { padding-left: 16px; padding-right: 16px; }
+  .onglets, .statut { padding-left: 16px; padding-right: 16px; }
+}

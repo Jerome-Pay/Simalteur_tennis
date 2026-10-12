@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Simulateur saison ATP</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8E%BE%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="style.css">
+  <script type="module" src="js/app.js"></script>
+</head>
+<body>
+  <header class="entete">
+    <div class="titre">
+      <h1>Simulateur saison ATP</h1>
+      <p class="sous-titre">128 joueurs de l'ère ATP Tour (1990 → aujourd'hui) dans une même saison</p>
+    </div>
+    <div class="controles">
+      <label class="graine">Graine
+        <input id="graine" type="number" min="0" max="999999999" step="1">
+      </label>
+      <button id="nouvelle" class="bouton secondaire" type="button">Nouvelle saison</button>
+      <button id="suivant" class="bouton" type="button">Tournoi suivant</button>
+      <button id="tout" class="bouton" type="button">Simuler la saison</button>
+    </div>
+  </header>
+
+  <div class="statut" id="statut">Chargement des joueurs…</div>
+
+  <nav class="onglets" id="onglets">
+    <button type="button" data-onglet="calendrier" class="actif">Calendrier</button>
+    <button type="button" data-onglet="classement">Classement</button>
+    <button type="button" data-onglet="palmares">Palmarès</button>
+    <button type="button" data-onglet="joueurs">Joueurs</button>
+  </nav>
+
+  <main id="contenu"></main>
+</body>
+</html>
